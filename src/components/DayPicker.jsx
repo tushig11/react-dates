@@ -5,7 +5,6 @@ import { withStyles, withStylesPropTypes } from 'react-with-styles';
 
 import moment from 'moment';
 import throttle from 'lodash/throttle';
-import isTouchDevice from 'is-touch-device';
 import OutsideClickHandler from 'react-outside-click-handler';
 
 import { DayPickerPhrases } from '../defaultPhrases';
@@ -226,7 +225,6 @@ class DayPicker extends React.PureComponent {
       nextFocusedDate: null,
       showKeyboardShortcuts: props.showKeyboardShortcuts,
       onKeyboardShortcutsPanelClose() {},
-      isTouchDevice: isTouchDevice(),
       withMouseInteractions: true,
       calendarInfoWidth: 0,
       monthTitleHeight: null,
@@ -273,7 +271,6 @@ class DayPicker extends React.PureComponent {
       : null;
 
     this.setState({
-      isTouchDevice: isTouchDevice(),
       calendarInfoWidth,
       currentMonthScrollTop,
     });
@@ -1039,7 +1036,6 @@ class DayPicker extends React.PureComponent {
       scrollableMonthMultiple,
       focusedDate,
       showKeyboardShortcuts,
-      isTouchDevice: isTouch,
       hasSetHeight,
       calendarInfoWidth,
       monthTitleHeight,
@@ -1252,7 +1248,7 @@ class DayPicker extends React.PureComponent {
                 && navPosition === NAV_POSITION_BOTTOM
                 && this.renderNavigation()}
 
-              {!isTouch && !hideKeyboardShortcutsPanel && (
+              {!hideKeyboardShortcutsPanel && (
                 <DayPickerKeyboardShortcuts
                   block={this.isVertical() && !withPortal}
                   buttonLocation={keyboardShortcutButtonLocation}
